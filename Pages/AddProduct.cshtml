@@ -1,0 +1,34 @@
+﻿@page
+@model ShopEasy.Pages.AddProductModel
+@{
+    ViewData["Title"] = "Add new product";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr/>
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <form methods="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Product name</label>
+                <input name="Product.Name" type="text" class="form-control" id="title" placeholder="Product name" />  
+                <span asp-validation-for="@Model.Product.Name"></span>
+            </div>
+            <div class="mb-3">
+                <label for="rate" class="form-label">Price</label>
+                <input name="Product.Price" type="number" min="1" class="form-control" id="price" placeholder="9" />
+                <span asp-validation-for="@Model.Product.Price"></span>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="Product.Description" class="form-control" id="description" rows="3"> </textarea>
+                <span asp-validation-for="@Model.Product.Description"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">ADD PRODUCT</button>
+        </form>
+
+    </div>
+
+</div>

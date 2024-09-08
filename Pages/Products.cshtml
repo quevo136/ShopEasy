@@ -1,0 +1,41 @@
+﻿@page
+@model ShopEasy.Pages.Products
+@{
+
+    <h3>@ViewData["Title"]</h3>
+    <hr/> 
+
+    <table class="table table-striped">
+        <thread>
+            <tr>
+                <th scope="vol">#</th>
+                <th scope="vol">Image</th>
+                <th scope="vol">Name</th>   
+                <th scope="vol">Price</th>
+                <th scope="vol">Description</th>
+                <th scope="vol">Action</th>
+            </tr>
+        </thread>
+    
+    <tbody>
+        @foreach(var _product in Model._Products)
+        {
+            <tr>
+                <th scope="row">@_product.Id</th>
+                <td>@_product.Image</td>
+                <td>@_product.Name</td>
+                <td>@_product.Price</td>
+                <td>@_product.Description</td>
+                <td>
+                    <a href="/Products/Details/@_product.Id" class="btn btn-secondary">Show details</a>
+                    
+                </td>
+            </tr>            
+        }      
+         
+    </tbody>
+    </table>
+    <div style="postion: fixed; button: 0px; right: 25px;">
+        <a href ="/AddProduct" class="btn btn-success">Add new product</a>
+    </div>
+}
