@@ -7,27 +7,30 @@ namespace ShopEasy.Pages
 {
     public class AddProductModel : PageModel
     {
-        [BindProperty]
-        
+        private readonly AppDbContext _context;
+        [BindProperty]       
         public Product? Product { get; set; }
-        private AppDbContext _context {  get; set; }
+        
         public AddProductModel(AppDbContext context)
         {
             _context = context;
         }
-        public void OnGet()
-        {
-        }
+        //public void OnGet()
+        //{
+        //}
         
-        public IActionResult OnPost() 
+        public async Task<IActionResult> OnPostAsync() 
         {
             var value = $"{Product?.Name} - {Product?.Price} - {Product?.Description}";
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            _context.Products.Add(Product);
-            _context.SaveChanges();
+            if (Product != null)
+            {
+                _context.Products.Add(Product);
+                await _context.SaveChangesAsync();
+            }
 
             return Redirect("/Products");
             
